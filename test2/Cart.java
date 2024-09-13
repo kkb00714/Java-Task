@@ -7,21 +7,33 @@ public class Cart {
         this.products = products;
     }
 
+    // 총 무게 메서드
+    public int getTotalWeight() {
+        int totalWeight = 0;
+        for (Product product: products) {
+            totalWeight += (int) product.getWeight();
+        }
+        return totalWeight;
+    }
+
+    // 총 가격 메서드
+    public int getTotalDeliveryCharge() {
+        int totalDeliveryCharge = 0;
+        for (Product product: products) {
+            totalDeliveryCharge += (int) product.getPrice();
+        }
+        return totalDeliveryCharge;
+    }
+
+
+    // 배송비를 계산해주는 메서드
     public int calculateDeliveryCharge() {
-        double cnt = 0;
+        DeliveryDiscountLogic discountLogic = new DeliveryDiscountLogic(this);
+        int deliveryCharge = discountLogic.getDeliveryCharge();
+        discountLogic.getDiscountAmount();
+        int discount = discountLogic.getCalculatedDiscount();
 
-        for (int i = 0; i < products.length; i++) {
-            Product product = products[i];
-            cnt += product.weight;
-        }
-
-        if (cnt < 3) {
-            return 1000;
-        } else if (cnt <= 3 && cnt < 10) {
-            return 5000;
-        } else {
-            return 10000;
-        }
+        return deliveryCharge - discount;
     }
 
 }

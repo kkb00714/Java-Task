@@ -1,6 +1,6 @@
 package chap08.test2;
 
-public class Product implements Promotion {
+public class Product{
     String name;
     double price;
     double weight;
@@ -11,8 +11,11 @@ public class Product implements Promotion {
         this.weight = weight;
     }
 
-    @Override
-    public void getDiscountAmount() {
+    public double getPrice() {
+        return this.price;
+    }
 
+    public double getWeight() {
+        return this.price;
     }
 }
