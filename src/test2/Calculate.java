@@ -1,4 +1,4 @@
-package chap08.test2;
+package chap08.src.test2;
 
 public class Calculate implements Promotion{
 
