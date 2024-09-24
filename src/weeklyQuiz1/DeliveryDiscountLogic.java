@@ -1,4 +1,4 @@
-package chap08.src.test2;
+package chap08.src.weeklyQuiz1;
 
 public class DeliveryDiscountLogic implements Promotion{
     private Cart cart;

@@ -1,4 +1,4 @@
-package chap08.src.test2;
+package chap08.src.weeklyQuiz1;
 
 public class Grocery extends Product{
     Grocery(String name, double price, double weight) {
