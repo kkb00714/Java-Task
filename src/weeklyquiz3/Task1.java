@@ -9,12 +9,12 @@ public class Task1 {
         String userPw = "0000";
 
         // JDBC 연결 및 실행
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            System.err.println(" !! <JDBC 오류> Driver load 오류: " + e.getMessage());
-            e.printStackTrace();
-        }
+//        try {
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//        } catch (ClassNotFoundException e) {
+//            System.err.println(" !! <JDBC 오류> Driver load 오류: " + e.getMessage());
+//            e.printStackTrace();
+//        }
 
         // DB 값 가져오기
         try (Connection connection = DriverManager.getConnection(url, userName, userPw);
@@ -27,12 +27,15 @@ public class Task1 {
                 String address = resultSet.getString("address"); // address 컬럼 값
 
                 // 결과 출력
-                System.out.println("이름: " + name + ", 나이: " + age + ", 주소: " + address);
+                System.out.println("이름: " + name + " | 나이: " + age + " | 주소: " + address);
+                System.out.println("-----------------------------------");
+
             }
 
         } catch (SQLException e) {
-            System.err.println("SQL 오류: " + e.getMessage());
-            e.printStackTrace();
+            System.err.println("SQL 오류: " + e.getMessage()); // 단점들 때문에 실무에서는 사용하지 않음.
+            // => 나중에 로거를 사용해서 서버에 출력하는 방법 사용하기.
+            // e.printStackTrace();     // 오류 내용을 콘솔에 그대로 출력하는 메서드이기 때문에 절대 사용하면 안 됨.
         }
     }
 }
